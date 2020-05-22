@@ -1,10 +1,10 @@
-puts "Как Вас зовут?"
+puts 'Как Вас зовут?'
 name = gets.chomp.capitalize!
 
-puts "Какой у Вас рост? (Введите в сантиметрах)"
-height = gets.chomp
+puts 'Какой у Вас рост? (Введите в сантиметрах)'
+height = gets.chomp.to_i
 
-ideal_weight = ( height.to_i - 110 ) * 1.15
+ideal_weight = (height - 110) * 1.15
 
 
 if  ideal_weight < 0
