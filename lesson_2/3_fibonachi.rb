@@ -1,10 +1,7 @@
 array = [1, 1]
 
-index = 1
-
-while  array[index] + array[index - 1] < 100 do
-  array[index + 1] = array[index] + array[index - 1]
-  index += 1
+while array[-1] + array[-2] < 100 do
+  array.push array[-1] + array[-2]
 end
 
 puts array
