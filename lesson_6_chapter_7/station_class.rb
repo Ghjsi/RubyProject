@@ -1,9 +1,10 @@
 require_relative 'counter'
 
 class Station
-  attr_reader :name, :trains
   
   include InstanceCounter
+
+  attr_reader :name, :trains
   
   def self.all 
     @@all_stations
@@ -16,6 +17,7 @@ class Station
     @name = name
     @trains = []
     @@all_stations << self 
+    validate!
   end
 
   def take_train(train_name)
@@ -28,5 +30,17 @@ class Station
 
   def get_trains_by_type(type)
     @trains.select { |train| train.type == type}
+  end
+
+  def valid?
+    true
+  rescue 
+    false
+  end
+
+  private
+
+  def validate!
+    raise 'Укажите название станции.' if name.length == 0
   end
 end
