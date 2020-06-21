@@ -1,26 +1,25 @@
 require_relative 'counter'
 
 class Station
-  
   include InstanceCounter
 
   attr_reader :name, :trains
-  
-  def self.all 
-    @@all_stations
+
+  def self.all
+    @all_stations
   end
-  
-  @@all_stations = []
-  
+
+  @all_stations = []
+
   def initialize(name)
     register_instance
     @name = name
     @trains = []
-    @@all_stations << self 
+    @all_stations << self
     validate!
   end
 
-  def each_train(&block)
+  def each_train
     @trains.each { |train| yield(train) }
   end
 
@@ -29,22 +28,22 @@ class Station
   end
 
   def send_train(train_name)
-     @trains.delete(train_name)
+    @trains.delete(train_name)
   end
 
   def get_trains_by_type(type)
-    @trains.select { |train| train.type == type}
+    @trains.select { |train| train.type == type }
   end
 
   def valid?
     true
-  rescue 
+  rescue StandardError
     false
   end
 
   private
 
   def validate!
-    raise 'Укажите название станции.' if name.length == 0
+    raise 'Укажите название станции.' if name.length.zero?
   end
 end

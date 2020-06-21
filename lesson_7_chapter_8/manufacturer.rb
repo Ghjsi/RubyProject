@@ -4,5 +4,4 @@ module Manufacturer
   def manufacturer
     puts "Произведено компанией \"#{@manufacturer}\""
   end
-
 end

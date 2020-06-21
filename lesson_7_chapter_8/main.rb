@@ -5,7 +5,6 @@ require_relative 'station_class'
 require_relative 'route_class'
 require_relative 'wagon_class'
 
+require_relative 'manager'
 
-require_relative 'manager' #
-
-Manager.new.start #
+Manager.new.start
